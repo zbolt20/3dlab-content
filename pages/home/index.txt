@@ -1,12 +1,30 @@
-# Главная
-<!-- date: 2026-01-02 22:33 -->
-
-<div style="background:linear-gradient(135deg,#1e3c72,#2a5298);min-height:100vh;color:white;padding:60px 20px;text-align
 # Главная 3D Lab
-<!-- date: 2026-01-02 22:44 -->
+<!-- date: 2026-01-02 22:26 -->
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport
+<div style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;color:white;padding:50px;text-align:center;font-family:'Arial',sans-serif;">
+<h1 style="font-size:4em;margin-bottom:20px;">🚀 3D Lab Беларусь</h1>
+<canvas id="hero3d" style="width:80%;max-width:800px;height:500px;margin:0 auto 40px;border:2px solid rgba(255,255,255,0.3);border-radius:20px;"></canvas>
+<div style="max-width:600px;margin:0 auto;">
+<p style="font-size:1.2em;line-height:1.6;">3D моделирование • Быстрая печать • Качественный рендер</p>
+<button onclick="scrollToContact()" style="background:#ff6b6b;color:white;border:none;padding:15px 30px;font-size:1.1em;border-radius:50px;cursor:pointer;margin:20px;">Заказать проект</button>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const canvas = document.getElementById('hero3d');
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x1a1a2e);
+const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth/500, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true}); renderer.setSize(canvas.clientWidth, 500);
+
+const light = new THREE.PointLight(0xffffff, 1, 100); light.position.set(10,10,10); scene.add(light);
+camera.position.z = 5;
+
+const geo = new THREE.TorusKnotGeometry(1, 0.4, 100, 16); 
+const mat = new THREE.MeshPhongMaterial({color: 0xff6b6b, shininess: 100});
+const torus = new THREE.Mesh(geo, mat); scene.add(torus);
+
+function animate() { requestAnimationFrame(animate); torus.rotation.x += 0.01; torus.rotation.y += 0.01; renderer.render(scene, camera); }
+animate(); window.addEventListener('resize', () => renderer.setSize(canvas.clientWidth, 500));
+function scrollToContact() { document.querySelector('footer')?.scrollIntoView({behavior:'smooth'}); }
+</script>
