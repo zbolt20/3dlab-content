@@ -1,0 +1,4 @@
+# Главная
+<!-- date: 2026-01-02 22:33 -->
+
+<div style="background:linear-gradient(135deg,#1e3c72,#2a5298);min-height:100vh;color:white;padding:60px 20px;text-align
